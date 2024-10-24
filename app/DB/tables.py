@@ -1,6 +1,8 @@
-# app/DB/tables.py
+from DB.database import Database
+
+
 def crear_tablas():
-    from app.DB.database import Database  # Importación local
+     # Importación local
     conn = Database().get_connection()  # Asegúrate de usar el método get_connection
     cursor = conn.cursor()
     
@@ -56,4 +58,4 @@ def crear_tablas():
     except Exception as e:
         print(f"Ocurrió un error al crear las tablas: {e}")
     finally:
-        conn.close()
+        cursor.close()

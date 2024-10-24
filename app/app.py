@@ -1,9 +1,11 @@
 import tkinter as tk
 from tkinter import messagebox
-from app.clases.Peliculas import Pelicula
-from app.DB.tables import crear_tablas
+from clases.Peliculas import Pelicula
+from DB.tables import crear_tablas
 
+# Crear tablas solo una vez
 crear_tablas()
+
 # Crear la ventana principal
 root = tk.Tk()
 root.title("Gestor de Películas")
@@ -24,12 +26,12 @@ label_Anyo.grid(row=2, column=0, padx=10, pady=10)
 entry_Anyo = tk.Entry(root)
 entry_Anyo.grid(row=2, column=1, padx=10, pady=10)
 
-label_Gendres = tk.Label(root, text="Gendres:")
+label_Gendres = tk.Label(root, text="Géneros:")
 label_Gendres.grid(row=3, column=0, padx=10, pady=10)
 entry_Gendres = tk.Entry(root)
 entry_Gendres.grid(row=3, column=1, padx=10, pady=10)
 
-label_Actors = tk.Label(root, text="Actors:")
+label_Actors = tk.Label(root, text="Actores:")
 label_Actors.grid(row=4, column=0, padx=10, pady=10)
 entry_Actors = tk.Entry(root)
 entry_Actors.grid(row=4, column=1, padx=10, pady=10)
@@ -39,18 +41,18 @@ label_Rating.grid(row=5, column=0, padx=10, pady=10)
 entry_Rating = tk.Entry(root)
 entry_Rating.grid(row=5, column=1, padx=10, pady=10)
 
-label_Duration = tk.Label(root, text="Duration")
+label_Duration = tk.Label(root, text="Duración (minutos):")
 label_Duration.grid(row=6, column=0, padx=10, pady=10)
 entry_Duration = tk.Entry(root)
 entry_Duration.grid(row=6, column=1, padx=10, pady=10)
 
-label_RecomendAge = tk.Label(root, text="RecomendAge")
+label_RecomendAge = tk.Label(root, text="Edad recomendada:")
 label_RecomendAge.grid(row=7, column=0, padx=10, pady=10)
 entry_RecomendAge = tk.Entry(root)
 entry_RecomendAge.grid(row=7, column=1, padx=10, pady=10)
 
 def guardar_pelicula():
-    nueva_pelicula =   Pelicula(
+    nueva_pelicula = Pelicula(
         entry_Title.get(),
         entry_Director.get(),
         entry_Anyo.get(),
@@ -59,8 +61,8 @@ def guardar_pelicula():
         entry_Rating.get(),
         entry_Duration.get(),
         entry_RecomendAge.get()
-        )
-    pelicula_id = nueva_pelicula.save_film()  # Suponiendo que este método guarda la película
+    )
+    pelicula_id = nueva_pelicula.save_film()  # Guarda la película en la BD
     if pelicula_id:
         messagebox.showinfo("Éxito", f"Película guardada con ID: {pelicula_id}")
     else:
