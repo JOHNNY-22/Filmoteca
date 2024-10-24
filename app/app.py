@@ -3,14 +3,11 @@ from tkinter import messagebox
 from clases.Peliculas import Pelicula
 from DB.tables import crear_tablas
 
-# Crear tablas solo una vez
 crear_tablas()
 
-# Crear la ventana principal
 root = tk.Tk()
 root.title("Gestor de Películas")
 
-# Definir las etiquetas y campos de entrada
 label_Title = tk.Label(root, text="Título de la película:")
 label_Title.grid(row=0, column=0, padx=10, pady=10)
 entry_Title = tk.Entry(root)
@@ -68,9 +65,7 @@ def guardar_pelicula():
     else:
         messagebox.showerror("Error", "No se pudo guardar la película.")
 
-# Botón para guardar la película
 boton_guardar = tk.Button(root, text="Guardar", command=guardar_pelicula)
 boton_guardar.grid(row=8, column=0, columnspan=2, pady=10)
 
-# Ejecutar el loop principal de la interfaz
 root.mainloop()

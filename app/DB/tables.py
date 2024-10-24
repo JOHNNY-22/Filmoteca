@@ -2,13 +2,9 @@ from DB.database import Database
 
 
 def crear_tablas():
-     # Importación local
-    conn = Database().get_connection()  # Asegúrate de usar el método get_connection
+    conn = Database().get_connection()
     cursor = conn.cursor()
     
-    # Código para crear tablas...
-
-
     try:
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS Films(
